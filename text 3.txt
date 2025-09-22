@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Real World Expert – Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #111;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .container {
+      padding: 20px;
+      max-width: 650px;
+      margin: auto;
+    }
+    .box {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .wallet {
+      font-size: 0.95rem;
+      word-wrap: break-word;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+    button {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    button:hover {
+      background: #444;
+    }
+    footer {
+      font-size: 0.8rem;
+      color: #777;
+      margin: 20px 0;
+    }
+    #statusBox {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .pending { color: orange; }
+    .verifying { color: dodgerblue; }
+    .confirmed { color: green; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💼 The Real World Expert</h1>
+    <p>Secure Payment Gateway</p>
+  </header>
+
+  <div class="container">
+    <div class="box">
+      <h2>One-Time Payment of $200</h2>
+      <p>Please pay <strong>$200 USDT (BEP20)</strong> to release your invested assets.</p>
+      <div id="qrcode"></div>
+      <p class="wallet" id="wallet">
+        0x18cc9a408760fc1d50a3ff9c94f14619fcdf5e0b
+      </p>
+      <button onclick="copyWallet()">📋 Copy Wallet Address</button>
+
+      <div id="statusBox" class="pending">
+        ⏳ Payment Status: Pending
+      </div>
+    </div>
+
+    <footer>
+      ✅ After sending the payment, kindly share your transaction screenshot with your consultant for confirmation.  
+      <br><br>
+      © 2025 The Real World Expert. All Rights Reserved.
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    // Wallet Address
+    const wallet = "0x18cc9a408760fc1d50a3ff9c94f14619fcdf5e0b";
+    new QRCode(document.getElementById("qrcode"), {
+      text: wallet,
+      width: 200,
+      height: 200
+    });
+
+    // Copy Function
+    function copyWallet() {
+      navigator.clipboard.writeText(wallet);
+      alert("Wallet address copied to clipboard!");
+    }
+
+    // Fake Status Simulation
+    const statusBox = document.getElementById("statusBox");
+    setTimeout(() => {
+      statusBox.innerHTML = "🔍 Payment Status: Verifying...";
+      statusBox.className = "verifying";
+    }, 5000);
+
+    setTimeout(() => {
+      statusBox.innerHTML = "✅ Payment Status: Confirmed";
+      statusBox.className = "confirmed";
+    }, 12000);
+  </script>
+</body>
+</html>
